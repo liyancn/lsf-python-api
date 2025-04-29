@@ -14,7 +14,7 @@ PROJECT = _lsf.so
 OBJECTS = lsf_wrap.o
 
 CFLAGS  = -m64 -fPIC -I$(PYTHON_INCLUDE) -I$(LSF_INCLUDE)
-LDFLAGS = $(LSF_LIBDIR)/liblsf.a $(LSF_LIBDIR)/libbat.a $(LSF_LIBDIR)/libfairshareadjust.so $(LSF_LIBDIR)/liblsbstream.so -lc -lnsl
+LDFLAGS = $(LSF_LIBDIR)/liblsf.a $(LSF_LIBDIR)/libbat.a $(LSF_LIBDIR)/libfairshareadjust.so $(LSF_LIBDIR)/liblsbstream.so -lc -lnsl -lz
 
 all: $(PROJECT)
 

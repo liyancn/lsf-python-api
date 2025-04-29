@@ -27,6 +27,7 @@ int fclose(FILE *f);
 #include "lib.table.h"
 extern struct gpuJobData* str2GpuJobData(char *str);
 %}
+typedef long off_t;
 
 %pointer_functions(int, intp)
 %pointer_functions(float, floatp)
