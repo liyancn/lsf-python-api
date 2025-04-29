@@ -27,7 +27,17 @@ def display(eventrec):
         for i in range(0,numhosts):
             hoststr += lsf.stringArray_getitem(exechosts, i) + ""
         print("EVENT_JOB_FORCE jobid<%d>, execHost<%s>, username<%s>" %(jobid, hoststr, username))
-
+    elif eventrec.type == lsf.EVENT_JOB_RUN_RUSAGE:
+        jobid = eventrec.eventLog.jobRunRusageLog.jobid;
+        numpgids = eventrec.eventLog.jobRunRusageLog.jrusage.npgids;
+        for i in range(0,numpgids):
+            pgids = str(lsf.intArray_getitem(eventrec.eventLog.jobRunRusageLog.jrusage.pgid, i)) + " "
+        pgids = pgids[:-1]
+        numpids = eventrec.eventLog.jobRunRusageLog.jrusage.npids;
+        for i in range(0,numpids):
+            pids = str(lsf.pidInfoArray_getitem(eventrec.eventLog.jobRunRusageLog.jrusage.pidInfo, i).pid) + " ";
+        pids = pids[:-1]
+        print("EVENT_JOB_RUN_RUSAGE jobid<%d> pgids<%s> pids<%s>" %(jobid, pgids, pids))
     else:
         print("event type is %d" %(eventrec.type))
 
