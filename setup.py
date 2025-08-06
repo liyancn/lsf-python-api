@@ -134,14 +134,13 @@ setup(name='lsf-pythonapi',
                                        #   '-DLSF_SIMULATOR',
                                           '-DOS_HAS_THREAD -D_REENTRANT', 
                                             gccflag_keyvaluet, gccflag_lsfversion],
-                               extra_compile_args=['-m64', 
+                               extra_compile_args=[
                                     '-I' + LSF_LIBDIR + '/../../include/lsf/', 
                                     '-Wno-strict-prototypes', gccflag_keyvaluet,
                                     gccflag_lsfversion,
                                     '-DOS_HAS_THREAD -D_REENTRANT', #For multi-thread lib, lserrno
                                     '-Wp,-U_FORTIFY_SOURCE', #The flag needs -O option. Undefine it for warning.
                                     '-O0'], 
-                               extra_link_args=['-m64'],
                                extra_objects=lsf_static_lib,
                                libraries=lsf_dynamic_lib)],
       py_modules=['pythonlsf.lsf'],
