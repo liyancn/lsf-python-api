@@ -66,7 +66,7 @@ if os.uname()[0] == 'Linux' and os.uname()[4] == 'ppc64le' :
         xlc_path = os.path.join(path, 'xlc')
         if os.access(xlc_path, os.F_OK):
             found_xlc = True
-            os.environ["LDSHARED"]  = "%s -pthread -shared -Wl,-z,relro" % xlc_path
+            os.environ["LDSHARED"]  = "%s -pthread -shared -Wl,-z,-lz,relro" % xlc_path
             break
     if found_xlc == False:
         print('''
@@ -90,11 +90,11 @@ if is_keyvalue_defined(LSF_INCDIR + '/lsbatch.h') is not None:
 
 if os.access(LSF_LIBDIR + "/liblsbstream.a", os.F_OK):
     lsf_static_lib = [ LSF_LIBDIR + '/liblsbstream.a']
-    lsf_dynamic_lib = ['c', 'nsl', 'rt']
+    lsf_dynamic_lib = ['c', 'nsl', 'rt', 'z']
     warning_msg = ""
 else:
     lsf_static_lib = []
-    lsf_dynamic_lib = ['c', 'nsl', 'lsbstream', 'lsf', 'bat', 'rt']
+    lsf_dynamic_lib = ['c', 'nsl', 'lsbstream', 'lsf', 'bat', 'rt', 'z']
     warning_msg = '''
 Warning: The compatibility of the LSF Python API package is not guaranteed 
          if you update LSF at a later time. This is because your current 

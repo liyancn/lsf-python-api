@@ -27,6 +27,7 @@ int fclose(FILE *f);
 #include "lib.table.h"
 extern struct gpuJobData* str2GpuJobData(char *str);
 %}
+typedef long off_t;
 
 %pointer_functions(int, intp)
 %pointer_functions(float, floatp)
@@ -52,6 +53,7 @@ extern struct gpuJobData* str2GpuJobData(char *str);
 %array_functions(struct gpuTaskData, gpuTaskDataArray)
 %array_functions(struct gpuData *, gpuDataArray)
 %array_functions(struct migData, migDataArray)
+%array_functions(struct pidInfo, pidInfoArray)
 #endif
 %array_functions(LS_LONG_INT, LS_LONG_INTArray)
 %array_functions(guaranteedResourcePoolEnt, guaranteedResourcePoolEntArray)
